@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Diabetes Prediction Tool</h1>
+            <p>Enter your health metrics to predict diabetes risk</p>
+        </header>
+
+        <div class="content">
+            <div class="input-section">
+                <h2>Health Indicators</h2>
+                <form id="prediction-form">
+                    <div class="form-group">
+                        <label for="pregnancies">Number of Pregnancies</label>
+                        <input type="number" id="pregnancies" name="pregnancies" min="0" step="1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="glucose">Glucose Level (mg/dL)</label>
+                        <input type="number" id="glucose" name="glucose" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bloodPressure">Blood Pressure (mm Hg)</label>
+                        <input type="number" id="bloodPressure" name="bloodPressure" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="skinThickness">Skin Thickness (mm)</label>
+                        <input type="number" id="skinThickness" name="skinThickness" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="insulin">Insulin Level (mu U/ml)</label>
+                        <input type="number" id="insulin" name="insulin" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bmi">BMI (weight in kg/(height in m)²)</label>
+                        <input type="number" id="bmi" name="bmi" min="0" step="0.1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="diabetesPedigree">Diabetes Pedigree Function</label>
+                        <input type="number" id="diabetesPedigree" name="diabetesPedigree" min="0" step="0.001" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="age">Age (years)</label>
+                        <input type="number" id="age" name="age" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="model">Select Model</label>
+                        <select id="model" name="model">
+                            <option value="ensemble">Ensemble (Default)</option>
+                            <option value="logistic_regression">Logistic Regression</option>
+                            <option value="random_forest">Random Forest</option>
+                            <option value="svm">Support Vector Machine</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="predict-btn">Predict</button>
+                </form>
+            </div>
+            
+            <div class="result-section" id="result-section">
+                <h2>Prediction Result</h2>
+                <div class="result-container">
+                    <div id="loading" class="loading">
+                        <div class="spinner"></div>
+                        <p>Processing...</p>
+                    </div>
+                    <div id="result" class="result">
+                        <div class="result-header">
+                            <span id="result-icon"></span>
+                            <h3 id="result-title">No prediction yet</h3>
+                        </div>
+                        <div class="result-details">
+                            <p>Make a prediction to see results</p>
+                            <div id="result-probability" class="probability-bar">
+                                <div class="probability-fill" style="width: 0%"></div>
+                                <span class="probability-text">0%</span>
+                            </div>
+                        </div>
+                        <div class="model-info">
+                            <p>Model: <span id="model-used">None</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Diabetes Prediction Model | Using Machine Learning</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
